@@ -1,5 +1,5 @@
 # I18N Middleware for CleverGo
-[![Build Status](https://img.shields.io/travis/clevergo/i18nmiddleware?style=flat-square)](https://travis-ci.org/clevergo/i18nmiddleware)
+[![Build Status](https://img.shields.io/travis/clevergo/i18nmiddleware?style=flat-square)](https://travis-ci.com/clevergo/i18nmiddleware)
 [![Coverage Status](https://img.shields.io/coveralls/github/clevergo/i18nmiddleware?style=flat-square)](https://coveralls.io/github/clevergo/i18nmiddleware)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/clevergo.tech/i18nmiddleware?tab=doc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/clevergo/i18nmiddleware?style=flat-square)](https://goreportcard.com/report/github.com/clevergo/i18nmiddleware)
