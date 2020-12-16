@@ -15,5 +15,41 @@ $ go get -u clevergo.tech/i18nmiddleware
 ## Usage
 
 ```go
+package main
 
+import (
+	"net/http"
+
+	"clevergo.tech/clevergo"
+	"clevergo.tech/i18nmiddleware"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"golang.org/x/text/language"
+)
+
+func main() {
+	app := clevergo.New()
+	bundle := i18n.NewBundle(language.English)
+	bundle.ParseMessageFileBytes([]byte(`{"home": "Home"}`), "en.json")
+	bundle.ParseMessageFileBytes([]byte(`{"home": "主页"}`), "zh-CN.json")
+	app.Use(i18nmiddleware.New(bundle))
+	app.Get("/", func(c *clevergo.Context) error {
+		localizer := i18nmiddleware.Localizer(c)
+		s, _, _ := localizer.LocalizeWithTag(&i18n.LocalizeConfig{
+			MessageID: "home",
+		})
+		return c.String(http.StatusOK, s)
+	})
+	app.Run(":8080")
+}
+```
+
+```shell
+$ curl http://localhost:8080/
+Home
+
+$ curl http://localhost:8080/?lang=zh-CN
+主页
+
+$ curl -H "Accept-Language: zh-CN" http://localhost:8080
+主页
 ```
